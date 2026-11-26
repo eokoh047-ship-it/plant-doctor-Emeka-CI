@@ -91,7 +91,7 @@ PRODUCTS = {
     }
   }
   (empty line)
-    if st.button("DIAGNOSE"):
+if st.button("DIAGNOSE"):
         st.write(f"*Crop:* {crop}")
         if "Dusty" in symptom:
             st.error("DIAGNOSIS: Fungal Attack")
