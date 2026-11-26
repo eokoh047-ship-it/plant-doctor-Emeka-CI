@@ -52,30 +52,51 @@ st.write("Scan your leaf, we tell you what to buy")
 crop = st.selectbox("Choose your crop:", ["Cocoa", "Manioc", "Banana", "Riz", "Patata", "Graine", "Cashew", "Eveiah", "Yam", "Groundnuts"])
 
 photo = st.file_uploader("Take photo of leaf", type=["jpg", "png", "jpeg"])
+PRODUCTS = {
+    "SUPERGRO": {
+        "image": "supergro.jpeg",
+        "name": "SUPERGRO - Engrais Liquide",
+        "desc": "Fait pousser la plante vite, rend les feuilles vertes et fortes.",
+        "usage": "1ml pour 1 litre d'eau. Arroser chaque 2 semaines.",
+        "price": "Prix: Contact Emeka"
+    },
+    "SUPER 10": {
+        "image": "super10.jpeg",
+        "name": "SUPER 10 - Anti-Insectes",
+        "desc": "Tue les insectes, pucerons, chenilles qui mangent les feuilles.",
+        "usage": "1ml pour 1 litre d'eau. Pulveriser sur feuilles matin ou soir.",
+        "price": "Prix: Contact Emeka"
+    },
+    "LDC": {
+        "image": "ldc.jpeg",
+        "name": "LDC - Anti-Maladies",
+        "desc": "Nettoie et protege contre les maladies de la plante.",
+        "usage": "1ml pour 1 litre d'eau. Pulveriser chaque 2 semaines.",
+        "price": "Prix: Contact Emeka"
+    },
+    "CARE": {
+        "image": "care.jpeg",
+        "name": "CARE - Soin & Protection",
+        "desc": "Protege la plante, aide a guerir les feuilles malades.",
+        "usage": "1ml pour 1 litre d'eau. Pulveriser sur feuilles malades.",
+        "price": "Prix: Contact Emeka"
+    },
+    "3 COMBATTANTS": {
+        "image": "combattants.jpeg",
+        "name": "LES 3 COMBATTANTS - Pack Complet",
+        "desc": "Super 10 + LDC + Care ensemble. Le meilleur pour tuer insectes + maladies + proteger la plante.",
+        "usage": "1ml de chaque pour 1 litre d'eau. Pulveriser chaque 2 semaines.",
+        "price": "Prix Pack: Contact Emeka"
+    }
+}
 
-if photo: "SUPERGRO": {
-    "image": "supergro.jpeg",
-...
-"SUPER 10": {
-    "image": "super10.jpeg",
-...
-"LDC": {
-    "image": "ldc.jpeg",
-...
-"CARE": {
-    "image": "care.jpeg",
-...
-"3 COMBATTANTS": {
-    "image": "combattants.jpeg",
-    st.image(photo, caption="Your leaf", width=300)
-    
-    st.subheader("What do you see on the leaf?")
-    symptom = st.selectbox("Pick symptom:", 
-        ["Dusty part / Dry / Fungus", 
-         "Insect hole / Pest don chop am", 
-         "Poor growth / Plant no dey grow well",
-         "Black Pod / Yellowish color",
-         "All of them together"])
+def show_product(key):
+    p = PRODUCTS[key]
+    st.image(p["image"], use_column_width=True)
+    st.markdown(f"### {p['name']}")
+    st.write(p["desc"])
+    st.info(f"**Comment utiliser:** {p['usage']}")
+    st.success(p["price"])
 
     if st.button("DIAGNOSE"):
         st.write(f"*Crop:* {crop}")
