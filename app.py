@@ -89,13 +89,8 @@ PRODUCTS = {
         "usage": "1ml de chaque pour 1 litre d'eau. Pulveriser chaque 2 semaines.",
         "price": "Prix Pack: Contact Emeka"
     }
-}
-}
-93  }
-94  (empty line)
-95  if st.button("DIAGNOSE"):
-
-
+  }
+  (empty line)
     if st.button("DIAGNOSE"):
         st.write(f"*Crop:* {crop}")
         if "Dusty" in symptom:
