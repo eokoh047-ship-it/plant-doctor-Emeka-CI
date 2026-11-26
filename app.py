@@ -90,7 +90,7 @@ PRODUCTS = {
         "price": "Prix Pack: Contact Emeka"
     }
   }
-  (emptyline)
+(emptyline)
 if st.button("DIAGNOSE"):
         st.write(f"*Crop:* {crop}")
         if "Dusty" in symptom:
