@@ -93,7 +93,7 @@ PRODUCTS = {
 ()
 if st.button("DIAGNOSE"):
         st.write(f"*Crop:* {crop}")
-        if "Dusty" in symptom:
+        if "Dusty" in symptoms:
             st.error("DIAGNOSIS: Fungal Attack")
             st.success("BUY: LDC - Kill fungals, leaves dryness, deadly micro fungals and prevent plants from early death or attack")
             st.write("Dosage: 1ml in 1L water")
