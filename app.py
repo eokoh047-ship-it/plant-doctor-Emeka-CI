@@ -53,7 +53,20 @@ crop = st.selectbox("Choose your crop:", ["Cocoa", "Manioc", "Banana", "Riz", "P
 
 photo = st.file_uploader("Take photo of leaf", type=["jpg", "png", "jpeg"])
 
-if photo:
+if photo: "SUPERGRO": {
+    "image": "supergro.jpeg",
+...
+"SUPER 10": {
+    "image": "super10.jpeg",
+...
+"LDC": {
+    "image": "ldc.jpeg",
+...
+"CARE": {
+    "image": "care.jpeg",
+...
+"3 COMBATTANTS": {
+    "image": "combattants.jpeg",
     st.image(photo, caption="Your leaf", width=300)
     
     st.subheader("What do you see on the leaf?")
