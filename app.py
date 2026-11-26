@@ -90,7 +90,7 @@ PRODUCTS = {
         "price": "Prix Pack: Contact Emeka"
     }
   }
-()
+symptoms = st.selectbox("What do you see on leaf?", ["Dusty / Powder", "Insect / Holes", "Yellow leaves", "Wilting"])
 if st.button("DIAGNOSE"):
         st.write(f"*Crop:* {crop}")
         if "Dusty" in symptoms:
