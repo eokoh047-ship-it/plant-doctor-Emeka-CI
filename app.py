@@ -93,7 +93,7 @@ PRODUCTS = {
 symptoms = st.selectbox("What do you see on leaf?", ["Dusty / Powder", "Insect / Holes", "Yellow leaves", "Wilting"])
 if st.button("DIAGNOSE"):
         st.write(f"*Crop:* {crop}")
-        if "Dusty" in symptoms:
+    if "Dusty" in symptoms:
     st.success("DIAGNOSIS: Fungal Attack")
     st.write("BUY: LDC")
     st.write("USE: 1 spoon in 5L water")
