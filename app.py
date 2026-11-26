@@ -88,7 +88,6 @@ PRODUCTS = {
         "desc": "Super 10 + LDC + Care ensemble. Le meilleur pour tuer insectes + maladies + proteger la plante.",
         "usage": "1ml de chaque pour 1 litre d'eau. Pulveriser chaque 2 semaines.",
         "price": "Prix Pack: Contact Emeka"
-    }
 }
 93  }
 94  (empty line)
