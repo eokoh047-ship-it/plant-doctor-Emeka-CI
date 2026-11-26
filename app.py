@@ -95,7 +95,7 @@ import streamlit as st
 st.title("🌱 PlantDoctor CI - Emeka")
 st.write("Diagnose your crop, buy correct product")
 
-crop = st.selectbox("Select Crop", ["Manioc", "Maize", "Tomate", "Piment"])
+crop = st.selectbox("Select Crop", ["Manioc", "Maize", "Tomate", "Piment", "Riz", "Igname", "Banane Plantain", "Cacao", "Cafe", "Arachide"])
 symptoms = st.multiselect("What do you see?", ["Dusty / Powder", "Insect / Holes", "Yellow Leaves", "Wilting"])
 
 if st.button("DIAGNOSE"):
