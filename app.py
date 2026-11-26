@@ -90,14 +90,10 @@ PRODUCTS = {
         "price": "Prix Pack: Contact Emeka"
     }
 }
+93  }
+94  (empty line)
+95  if st.button("DIAGNOSE"):
 
-def show_product(key):
-    p = PRODUCTS[key]
-    st.image(p["image"], use_column_width=True)
-    st.markdown(f"### {p['name']}")
-    st.write(p["desc"])
-    st.info(f"**Comment utiliser:** {p['usage']}")
-    st.success(p["price"])
 
     if st.button("DIAGNOSE"):
         st.write(f"*Crop:* {crop}")
