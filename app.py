@@ -94,9 +94,25 @@ symptoms = st.selectbox("What do you see on leaf?", ["Dusty / Powder", "Insect /
 if st.button("DIAGNOSE"):
         st.write(f"*Crop:* {crop}")
         if "Dusty" in symptoms:
-            st.error("DIAGNOSIS: Fungal Attack")
-            st.success("BUY: LDC - Kill fungals, leaves dryness, deadly micro fungals and prevent plants from early death or attack")
-            st.write("Dosage: 1ml in 1L water")
+    st.success("DIAGNOSIS: Fungal Attack")
+    st.write("BUY: LDC")
+    st.write("USE: 1 spoon in 5L water")
+    st.write("PRICE: 2500 FCFA")
+elif "Insect" in symptoms:
+    st.success("DIAGNOSIS: Insect Attack")
+    st.write("BUY: Super 10")
+    st.write("USE: 1 spoon in 5L water")
+    st.write("PRICE: 2000 FCFA")
+elif "Yellow" in symptoms:
+    st.success("DIAGNOSIS: Lack of Food / Nutrient")
+    st.write("BUY: NPK Fertilizer")
+    st.write("USE: 2 spoons per plant")
+    st.write("PRICE: 3500 FCFA")
+elif "Wilting" in symptoms:
+    st.success("DIAGNOSIS: Root / Water Problem")
+    st.write("BUY: Les Combattants")
+    st.write("USE: 1 spoon in 5L water")
+    st.write("PRICE: 3000 FCFA")
         elif "Insect" in symptom:
             st.error("DIAGNOSIS: Pest / Insect Attack")
             st.success("BUY: SUPER 10 - Kill pest, kill germs, remove black pods, prevent yellowish colors, prevent dangerous plants organisms")
