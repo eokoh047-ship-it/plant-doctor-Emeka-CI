@@ -100,28 +100,18 @@ symptoms = st.multiselect("What do you see?", ["Dusty / Powder", "Insect / Holes
 
 if st.button("DIAGNOSE"):
     st.write(f"Crop: {crop}")
-    if "Dusty" in symptoms:
+    if "Dusty / Powder" in symptoms:
         st.success("DIAGNOSIS: Fungal Attack")
         st.write("BUY: LDC")
-        st.write("USE: 1 spoon in 5L water")
-        st.write("PRICE: 2500 FCFA")
-    elif "Insect" in symptoms:
+    elif "Insect / Holes" in symptoms:
         st.success("DIAGNOSIS: Insect Attack")
         st.write("BUY: Super 10")
-        st.write("USE: 1 spoon in 5L water")
-        st.write("PRICE: 2000 FCFA")
-    elif "Yellow" in symptoms:
+    elif "Yellow Leaves" in symptoms:
         st.success("DIAGNOSIS: Lack of Food / Nutrient")
         st.write("BUY: NPK Fertilizer")
-        st.write("USE: 2 spoons per plant")
-        st.write("PRICE: 3500 FCFA")
     elif "Wilting" in symptoms:
         st.success("DIAGNOSIS: Root / Water Problem")
         st.write("BUY: Les Combattants")
-        st.write("USE: 1 spoon in 5L water")
-        st.write("PRICE: 3000 FCFA")
-    else:
-        st.warning("Please select a symptom")
 # --- SHOW PRODUCT AFTER DIAGNOSIS ---
 st.markdown("---")
 st.markdown("## 💊 Traitement Recommandé - NEOLIFE")
