@@ -90,46 +90,38 @@ PRODUCTS = {
         "price": "Prix Pack: Contact Emeka"
     }
   }
-symptoms = st.selectbox("What do you see on leaf?", ["Dusty / Powder", "Insect / Holes", "Yellow leaves", "Wilting"])
+import streamlit as st
+
+st.title("🌱 PlantDoctor CI - Emeka")
+st.write("Diagnose your crop, buy correct product")
+
+crop = st.selectbox("Select Crop", ["Manioc", "Maize", "Tomate", "Piment"])
+symptoms = st.multiselect("What do you see?", ["Dusty / Powder", "Insect / Holes", "Yellow Leaves", "Wilting"])
+
 if st.button("DIAGNOSE"):
-        st.write(f"*Crop:* {crop}")
-    if"Dusty" in symptoms:
-    st.success("DIAGNOSIS: Fungal Attack")
-    st.write("BUY: LDC")
-    st.write("USE: 1 spoon in 5L water")
-    st.write("PRICE: 2500 FCFA")
-elif "Insect" in symptoms:
-    st.success("DIAGNOSIS: Insect Attack")
-    st.write("BUY: Super 10")
-    st.write("USE: 1 spoon in 5L water")
-    st.write("PRICE: 2000 FCFA")
-elif "Yellow" in symptoms:
-    st.success("DIAGNOSIS: Lack of Food / Nutrient")
-    st.write("BUY: NPK Fertilizer")
-    st.write("USE: 2 spoons per plant")
-    st.write("PRICE: 3500 FCFA")
-elif "Wilting" in symptoms:
-    st.success("DIAGNOSIS: Root / Water Problem")
-    st.write("BUY: Les Combattants")
-    st.write("USE: 1 spoon in 5L water")
-    st.write("PRICE: 3000 FCFA")
-        elif "Insect" in symptom:
-            st.error("DIAGNOSIS: Pest / Insect Attack")
-            st.success("BUY: SUPER 10 - Kill pest, kill germs, remove black pods, prevent yellowish colors, prevent dangerous plants organisms")
-            st.write("Dosage: 1ml in 1L water")
-        elif "Poor growth" in symptom:
-            st.error("DIAGNOSIS: Poor Growth")
-            st.success("BUY: CARE - Prevent poor growth, bad insects, pest, fungals and bactérie from plants")
-            st.write("Dosage: 1ml in 1L water")
-        elif "Black Pod" in symptom:
-            st.error("DIAGNOSIS: Black Pod / Fungal + Pest")
-            st.success("BUY: SUPER 10 + LDC")
-            st.write("Dosage: 1ml in 1L water")
-        else:
-            st.error("DIAGNOSIS: Multiple Attack")
-            st.success("BUY: PACK COMPLETE - LDC + SUPER 10 + CARE + SuperGro")
-            st.write("Price: 130,000F - Dosage: 1ml in 1L water")
-            st.write("For Cocoa, Manioc, Banana, Riz, Patata, Graine, Cashew, Eveiah, Yam, Groundnuts")
+    st.write(f"Crop: {crop}")
+    if "Dusty" in symptoms:
+        st.success("DIAGNOSIS: Fungal Attack")
+        st.write("BUY: LDC")
+        st.write("USE: 1 spoon in 5L water")
+        st.write("PRICE: 2500 FCFA")
+    elif "Insect" in symptoms:
+        st.success("DIAGNOSIS: Insect Attack")
+        st.write("BUY: Super 10")
+        st.write("USE: 1 spoon in 5L water")
+        st.write("PRICE: 2000 FCFA")
+    elif "Yellow" in symptoms:
+        st.success("DIAGNOSIS: Lack of Food / Nutrient")
+        st.write("BUY: NPK Fertilizer")
+        st.write("USE: 2 spoons per plant")
+        st.write("PRICE: 3500 FCFA")
+    elif "Wilting" in symptoms:
+        st.success("DIAGNOSIS: Root / Water Problem")
+        st.write("BUY: Les Combattants")
+        st.write("USE: 1 spoon in 5L water")
+        st.write("PRICE: 3000 FCFA")
+    else:
+        st.warning("Please select a symptom")
 # --- SHOW PRODUCT AFTER DIAGNOSIS ---
 st.markdown("---")
 st.markdown("## 💊 Traitement Recommandé - NEOLIFE")
