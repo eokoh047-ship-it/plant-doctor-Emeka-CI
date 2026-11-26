@@ -112,4 +112,4 @@ st.markdown("### Pour faire pousser plus vite:")
 show_product("SUPERGRO")
 
 st.markdown("📞 *Pour commander, contact Emeka - WhatsApp*")
-        st.link_button("📲 Order on WhatsApp", "https://wa.me/2250508032267?text=Hello, I want to order for PlantDoctor")
+st.link_button("📲 Order on WhatsApp", "https://wa.me/2250508032267?text=Hello, I want to order for PlantDoctor")
