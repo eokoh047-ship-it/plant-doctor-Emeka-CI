@@ -78,10 +78,18 @@ PRODUCTS = {
     "CARE": {
         "image": "CARE.jpeg",
         "name": "CARE - Soin & Protection",
-        "desc": "Protege la plante, aide a guerir les feuilles malades." "LES COMBATTANT - Pack Complet",
+        "desc": "Protege la plante, aide a guerir les feuilles malades.",
+        "usage": "1ml pour 1 litre d'eau. Pulveriser chaque 2 semaines.",
+        "price": "Prix: Contact Emeka"
+    },
+    "3 COMBATTANTS": {
+        "image": "3 COMBATTANTS.jpeg",
+        "name": "LES COMBATTANT - Pack Complet",
         "desc": "Super 10 + LDC + Care ensemble. Le meilleur pour tuer insectes + maladies + proteger la plante.",
         "usage": "1ml de chaque pour 1 litre d'eau. Pulveriser chaque 2 semaines.",
         "price": "Prix Pack: Contact Emeka"
+    }
+}
 }
 93  }
 94  (empty line)
