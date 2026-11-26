@@ -42,8 +42,6 @@ def show_product(key):
     import os
     if os.path.exists(p["image"]):
         st.image(p["image"], use_column_width=True)
-    st.write(f"Photo {p['image']} no found - but product dey below")  
-    st.write(f"Photo {p['image']} no found - but product dey below")
     st.markdown(f"### {p['name']}")
     st.write(p["desc"])
     st.info(f"*Comment utiliser:* {p['usage']}")
