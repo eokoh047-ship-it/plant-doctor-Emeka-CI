@@ -9,59 +9,49 @@ st.title("🌱 PlantDoctor CI - Emeka")
 st.write("Diagnose your crop / Diagnostiquez votre culture")
 st.write("📞 WhatsApp: 05 08 03 22 67")
 
-# --- 10 CROPS ---
 crops = {
     "Manioc": "🥔", "Maize": "🌽", "Tomate": "🍅", "Piment": "🌶️", "Riz": "🍚",
     "Igname": "🍠", "Banane": "🍌", "Cacao": "🍫", "Cafe": "☕", "Arachide": "🥜",
 }
 
-# --- 1. CROP NAME + CROP PHOTO ---
 crop = st.selectbox("1. Select Crop / Choisir Culture", list(crops.keys()))
 st.write(f"### {crops[crop]} {crop}")
-
-# Check crop photo if e dey
-crop_photo = f"{crop.lower()}.jpg"
-if os.path.exists(crop_photo):
-    st.image(crop_photo, width=250)
-else:
-    st.write(f"{crops[crop]} Photo coming soon")
 
 symptoms = st.multiselect("2. What do you see? / Que voyez-vous?",
     ["Dusty / Powder", "Insect / Holes", "Yellow Leaves", "Wilting"])
 
-# --- PRODUCTS WITH PHOTOS ---
+# --- MATCH YOUR GITHUB NAMES EXACTLY ---
 products = {
     "Dusty / Powder": {
         "diagnosis": "Fungal Attack / Attaque Fongique",
         "product": "LDC",
         "price": "24,900 FCFA",
         "use": "1 spoon in 5L water / 1 cuillère dans 5L d'eau",
-        "image": "ldc.jpg"
+        "image": "LDC.jpeg"
     },
     "Insect / Holes": {
         "diagnosis": "Insect Attack / Attaque d'Insectes",
         "product": "SUPER 10",
         "price": "24,900 FCFA",
         "use": "1 spoon in 5L water / 1 cuillère dans 5L d'eau",
-        "image": "super10.jpg"
+        "image": "SUPER 10.jpeg"
     },
     "Yellow Leaves": {
         "diagnosis": "Lack of Nutrients / Manque de Nutriments",
         "product": "SUPER GRO",
         "price": "70,000 FCFA",
         "use": "1 spoon in 5L water / 1 cuillère dans 5L d'eau",
-        "image": "supergro.jpg"
+        "image": "SUPERGRO.jpeg"
     },
     "Wilting": {
         "diagnosis": "Root / Water Problem / Problème Racine / Eau",
         "product": "CARE",
         "price": "25,000 FCFA",
         "use": "1 spoon in 5L water / 1 cuillère dans 5L d'eau",
-        "image": "care.jpg"
+        "image": "CARE.jpeg"
     }
 }
 
-# --- 3. DIAGNOSE + PRODUCT PHOTO + PRICE + WHATSAPP ---
 if st.button("DIAGNOSE / DIAGNOSTIQUER", type="primary"):
     if not symptoms:
         st.warning("Select symptom first / Choisissez symptôme d'abord")
@@ -73,12 +63,10 @@ if st.button("DIAGNOSE / DIAGNOSTIQUER", type="primary"):
 
             col_p1, col_p2 = st.columns([1, 1])
             with col_p1:
-                # FIX: If photo no dey, no crash
                 if os.path.exists(info['image']):
                     st.image(info['image'], caption=info['product'], use_container_width=True)
                 else:
-                    st.write(f"📷 {info['product']} photo - check GitHub upload")
-                    st.write(f"File missing: {info['image']}")
+                    st.write(f"📷 {info['product']} photo - check GitHub")
             with col_p2:
                 st.write(f"### {info['product']}")
                 st.write(f"**PRICE / PRIX: {info['price']}**")
