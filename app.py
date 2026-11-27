@@ -4,7 +4,7 @@ import os
 
 WHATSAPP_NUMBER = "225508032267"
 
-st.set_page_config(page_title="PlantDoctor CI - Emeka", page_icon="🌱")
+st.set_page_config(page_title="EMEKA Plant Doctor CI", page_icon="🌿")
 st.title("🌱 PlantDoctor CI - Emeka")
 st.write("Diagnose your crop / Diagnostiquez votre culture")
 st.write("📞 WhatsApp: 05 08 03 22 67")
