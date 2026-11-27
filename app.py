@@ -1,5 +1,6 @@
 import streamlit as st
 import urllib.parse
+import os
 
 WHATSAPP_NUMBER = "225508032267"
 
@@ -10,32 +11,23 @@ st.write("📞 WhatsApp: 05 08 03 22 67")
 
 # --- 10 CROPS ---
 crops = {
-    "Manioc": {"photo": "manioc.jpg", "emoji": "🥔"},
-    "Maize": {"photo": "maize.jpg", "emoji": "🌽"},
-    "Tomate": {"photo": "tomate.jpg", "emoji": "🍅"},
-    "Piment": {"photo": "piment.jpg", "emoji": "🌶️"},
-    "Riz": {"photo": "riz.jpg", "emoji": "🍚"},
-    "Igname": {"photo": "igname.jpg", "emoji": "🍠"},
-    "Banane": {"photo": "banane.jpg", "emoji": "🍌"},
-    "Cacao": {"photo": "cacao.jpg", "emoji": "🍫"},
-    "Cafe": {"photo": "cafe.jpg", "emoji": "☕"},
-    "Arachide": {"photo": "arachide.jpg", "emoji": "🥜"},
+    "Manioc": "🥔", "Maize": "🌽", "Tomate": "🍅", "Piment": "🌶️", "Riz": "🍚",
+    "Igname": "🍠", "Banane": "🍌", "Cacao": "🍫", "Cafe": "☕", "Arachide": "🥜",
 }
 
 # --- 1. CROP NAME + CROP PHOTO ---
 crop = st.selectbox("1. Select Crop / Choisir Culture", list(crops.keys()))
+st.write(f"### {crops[crop]} {crop}")
 
-col_crop1, col_crop2 = st.columns([1, 1])
-with col_crop1:
-    st.write(f"### {crops[crop]['emoji']} {crop}")
-    try:
-        st.image(crops[crop]['photo'], width=250)
-    except:
-        st.write(f"{crops[crop]['emoji']} {crop} - Photo coming soon")
-with col_crop2:
-    st.write("**2. What do you see? / Que voyez-vous?**")
-    symptoms = st.multiselect("Symptoms / Symptômes",
-        ["Dusty / Powder", "Insect / Holes", "Yellow Leaves", "Wilting"])
+# Check crop photo if e dey
+crop_photo = f"{crop.lower()}.jpg"
+if os.path.exists(crop_photo):
+    st.image(crop_photo, width=250)
+else:
+    st.write(f"{crops[crop]} Photo coming soon")
+
+symptoms = st.multiselect("2. What do you see? / Que voyez-vous?",
+    ["Dusty / Powder", "Insect / Holes", "Yellow Leaves", "Wilting"])
 
 # --- PRODUCTS WITH PHOTOS ---
 products = {
@@ -81,7 +73,12 @@ if st.button("DIAGNOSE / DIAGNOSTIQUER", type="primary"):
 
             col_p1, col_p2 = st.columns([1, 1])
             with col_p1:
-                st.image(info['image'], caption=info['product'], use_container_width=True)
+                # FIX: If photo no dey, no crash
+                if os.path.exists(info['image']):
+                    st.image(info['image'], caption=info['product'], use_container_width=True)
+                else:
+                    st.write(f"📷 {info['product']} photo - check GitHub upload")
+                    st.write(f"File missing: {info['image']}")
             with col_p2:
                 st.write(f"### {info['product']}")
                 st.write(f"**PRICE / PRIX: {info['price']}**")
@@ -94,5 +91,3 @@ if st.button("DIAGNOSE / DIAGNOSTIQUER", type="primary"):
 
 st.divider()
 st.write("PlantDoctor CI - By Emeka | Directeur Neolife")
-st.write("Diagnosis is free if you buy product / Diagnostic gratuit si vous achetez")
- 
