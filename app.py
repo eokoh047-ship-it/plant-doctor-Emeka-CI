@@ -14,13 +14,34 @@ crops = {
     "Igname": "🍠", "Banane": "🍌", "Cacao": "🍫", "Cafe": "☕", "Arachide": "🥜",
 }
 
+# --- 1. CROP ---
 crop = st.selectbox("1. Select Crop / Choisir Culture", list(crops.keys()))
 st.write(f"### {crops[crop]} {crop}")
 
-symptoms = st.multiselect("2. What do you see? / Que voyez-vous?",
+# --- 2. TAKE CROP PHOTO - NEW! ---
+st.write("### 2. Take Photo of Your Crop / Prenez Photo de Votre Culture 📸")
+st.write("Take photo of the sick leaf / Prenez photo de la feuille malade")
+
+# For phone: camera go open. For computer: upload go show
+crop_photo = st.camera_input("📷 Take Photo / Prendre Photo", label_visibility="collapsed")
+
+# If camera no work, use upload as backup
+if crop_photo is None:
+    uploaded = st.file_uploader("Or Upload Photo / Ou Télécharger Photo", type=["jpg", "jpeg", "png"], label_visibility="collapsed")
+    if uploaded is not None:
+        crop_photo = uploaded
+
+if crop_photo is not None:
+    st.image(crop_photo, caption=f"Your {crop} photo / Votre photo {crop}", width=300)
+    st.success("✅ Photo received / Photo reçue !")
+else:
+    st.info("👆 Take photo first to continue / Prenez photo d'abord")
+
+# --- 3. SYMPTOMS ---
+symptoms = st.multiselect("3. What do you see? / Que voyez-vous?",
     ["Dusty / Powder", "Insect / Holes", "Yellow Leaves", "Wilting"])
 
-# --- REAL NAMES FROM YOUR GITHUB - WITH SPACE BEFORE .jpeg ---
+# --- PRODUCTS - WITH SPACE NAMES ---
 products = {
     "Dusty / Powder": {
         "diagnosis": "Fungal Attack / Attaque Fongique",
@@ -52,8 +73,11 @@ products = {
     }
 }
 
+# --- 4. DIAGNOSE ---
 if st.button("DIAGNOSE / DIAGNOSTIQUER", type="primary"):
-    if not symptoms:
+    if crop_photo is None:
+        st.warning("⚠️ Take crop photo first! / Prenez photo de la culture d'abord!")
+    elif not symptoms:
         st.warning("Select symptom first / Choisissez symptôme d'abord")
     else:
         for s in symptoms:
