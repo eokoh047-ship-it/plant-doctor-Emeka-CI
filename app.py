@@ -8,12 +8,36 @@ st.title("🌱 PlantDoctor CI - Emeka")
 st.write("Diagnose your crop / Diagnostiquez votre culture")
 st.write("📞 WhatsApp: 05 08 03 22 67")
 
-crop = st.selectbox("1. Select Crop / Choisir Culture",
-    ["Manioc", "Maize", "Tomate", "Piment", "Riz", "Igname", "Banane", "Cacao", "Cafe", "Arachide"])
+# --- 10 CROPS ---
+crops = {
+    "Manioc": {"photo": "manioc.jpg", "emoji": "🥔"},
+    "Maize": {"photo": "maize.jpg", "emoji": "🌽"},
+    "Tomate": {"photo": "tomate.jpg", "emoji": "🍅"},
+    "Piment": {"photo": "piment.jpg", "emoji": "🌶️"},
+    "Riz": {"photo": "riz.jpg", "emoji": "🍚"},
+    "Igname": {"photo": "igname.jpg", "emoji": "🍠"},
+    "Banane": {"photo": "banane.jpg", "emoji": "🍌"},
+    "Cacao": {"photo": "cacao.jpg", "emoji": "🍫"},
+    "Cafe": {"photo": "cafe.jpg", "emoji": "☕"},
+    "Arachide": {"photo": "arachide.jpg", "emoji": "🥜"},
+}
 
-symptoms = st.multiselect("2. What do you see? / Que voyez-vous?",
-    ["Dusty / Powder", "Insect / Holes", "Yellow Leaves", "Wilting"])
+# --- 1. CROP NAME + CROP PHOTO ---
+crop = st.selectbox("1. Select Crop / Choisir Culture", list(crops.keys()))
 
+col_crop1, col_crop2 = st.columns([1, 1])
+with col_crop1:
+    st.write(f"### {crops[crop]['emoji']} {crop}")
+    try:
+        st.image(crops[crop]['photo'], width=250)
+    except:
+        st.write(f"{crops[crop]['emoji']} {crop} - Photo coming soon")
+with col_crop2:
+    st.write("**2. What do you see? / Que voyez-vous?**")
+    symptoms = st.multiselect("Symptoms / Symptômes",
+        ["Dusty / Powder", "Insect / Holes", "Yellow Leaves", "Wilting"])
+
+# --- PRODUCTS WITH PHOTOS ---
 products = {
     "Dusty / Powder": {
         "diagnosis": "Fungal Attack / Attaque Fongique",
@@ -33,7 +57,7 @@ products = {
         "diagnosis": "Lack of Nutrients / Manque de Nutriments",
         "product": "SUPER GRO",
         "price": "70,000 FCFA",
-        "use": "1 spoon in 5L water / 1 cuillère dans 5L d'eau - Pour croissance",
+        "use": "1 spoon in 5L water / 1 cuillère dans 5L d'eau",
         "image": "supergro.jpg"
     },
     "Wilting": {
@@ -45,22 +69,30 @@ products = {
     }
 }
 
+# --- 3. DIAGNOSE + PRODUCT PHOTO + PRICE + WHATSAPP ---
 if st.button("DIAGNOSE / DIAGNOSTIQUER", type="primary"):
     if not symptoms:
-        st.warning("Please select a symptom / Svp choisissez un symptôme")
+        st.warning("Select symptom first / Choisissez symptôme d'abord")
     else:
-        st.write(f"**Crop / Culture:** {crop}")
         for s in symptoms:
             info = products[s]
             st.divider()
-            st.success(f"DIAGNOSIS: {info['diagnosis']}")
-            st.image(info['image'], width=300)
-            st.write(f"**BUY / ACHETER:** {info['product']}")
-            st.write(f"**PRICE / PRIX:** {info['price']}")
-            st.write(f"**USE / UTILISATION:** {info['use']}")
+            st.success(f"DIAGNOSIS for {crop}: {info['diagnosis']}")
+
+            col_p1, col_p2 = st.columns([1, 1])
+            with col_p1:
+                st.image(info['image'], caption=info['product'], use_container_width=True)
+            with col_p2:
+                st.write(f"### {info['product']}")
+                st.write(f"**PRICE / PRIX: {info['price']}**")
+                st.write(f"**USE: {info['use']}**")
+                st.write(f"**FOR / POUR: {crop}**")
+
             msg = f"Bonjour Emeka, je veux commander {info['product']} pour {crop} - {info['diagnosis']} - Prix {info['price']}"
             link = f"https://wa.me/{WHATSAPP_NUMBER}?text={urllib.parse.quote(msg)}"
-            st.link_button(f"Commander {info['product']} sur WhatsApp 📲", link)
+            st.link_button(f"Commander {info['product']} sur WhatsApp 📲", link, use_container_width=True)
 
 st.divider()
 st.write("PlantDoctor CI - By Emeka | Directeur Neolife")
+st.write("Diagnosis is free if you buy product / Diagnostic gratuit si vous achetez")
+ 
